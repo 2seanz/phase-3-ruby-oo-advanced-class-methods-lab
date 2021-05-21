@@ -6,8 +6,46 @@ class Song
     @@all
   end
 
-  def save
-    self.class.all << self
+  # def save
+  #   self.class.all << self
+  # end
+
+  def self.create
+    song = self.new
+    @@all << seld=f
+    song
+  end
+
+  def self.new_by_name(name)
+    song = self.new
+    song.name = name
+    song
+  end
+
+  def self.create_by_name(name)
+    song = self.new
+    song.name = name
+    @@all << self
+    song
+  end
+
+  def self.find_by_name(song_name)
+    # self.all.find{ |pho| pho.song_name == song_name}
+    @@all.find{ |x| x.name == song_name}
+  end
+
+  def self.find_or_create_by_name(song_name)
+    # self.find_by_name(song_name) || self.create_by_name(song_name)
+    if self.find_by_name(song_name).name == song_name
+      self.find_by_name(song_name)
+  else
+      self.create_by_name(song_name)
+  end
+  end
+
+  def self.alphabetical
+    # self.all.sort_by { |s| s.name}
+
   end
 
 end
